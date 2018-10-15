@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import interested
+from .models import interested, clientele, assignment
 
 class InterestedAdmin(admin.ModelAdmin):
 	list_display = ['email_address', 'interested_in',]
@@ -11,4 +11,25 @@ class InterestedAdmin(admin.ModelAdmin):
 	class Meta:
 		model = interested
 
+class ClienteleAdmin(admin.ModelAdmin):
+	list_display = ['client', 'business_url','business_type']
+	list_filter = ['client', 'business_url','business_type']
+	search_fields = ['client', 'business_url','business_type']
+	list_editable = ['business_url']
+	
+	class Meta:
+		model = clientele
+
+class AssignmentAdmin(admin.ModelAdmin):
+	list_display = ['client', 'content_url', 'due_date','status']
+	list_filter = ['client', 'content_url', 'due_date','status']
+	search_fields = ['client', 'content_url', 'due_date','status']
+	list_editable = ['status',]
+	
+	class Meta:
+		model = assignment
+
+
 admin.site.register(interested, InterestedAdmin)
+admin.site.register(clientele, ClienteleAdmin)
+admin.site.register(assignment, AssignmentAdmin)

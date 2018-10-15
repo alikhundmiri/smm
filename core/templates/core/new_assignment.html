@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+The doctor will see you now! | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+{% block content_2 %}
+
+<!-- <div style="margin-top: 100px"></div> -->
+<div style="margin-top: 100px"></div>
+
+<div class="row">
+	<div class="col">
+		<h1 class="emoji-header-center">🛎</h1>	
+		<h3>{{top_text}}</h3>
+		<h3><small>{{form_text}}</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<form method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+			{{ form|crispy }}
+			<input type='submit' class='btn btn-outline-primary btn-lg' value='{{ tab_text }}'/>
+		</form>
+	</div>
+</div>
+<div style="margin-top: 100px"></div>
+
+<!-- <div style="margin-top: 100px"></div> -->
+{% endblock %}

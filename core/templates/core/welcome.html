@@ -14,5 +14,8 @@ The doctor will see you now! | {{ block.super }}
 
 <!-- <div style="margin-top: 100px"></div> -->
 {{client_assignment }}
+
+<a href="{% url 'core:new_assignment' user_id=request.user.id %}">New Assignment</a>
+
 <!-- <div style="margin-top: 100px"></div> -->
 {% endblock %}

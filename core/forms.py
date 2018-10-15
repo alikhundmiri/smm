@@ -36,6 +36,19 @@ class InterestedForm(forms.ModelForm):
         self.fields["interested_in"].help_text = "Please expect our email with in 24 hours."
         self.fields["interested_in"].label = "Your Email Addresss"
 
+
+class assignmentForm(forms.ModelForm):
+    class Meta:
+        model = assignment
+        fields = [
+        'content_url',
+        ]
+    def __init__(self, *args, **kwargs):
+        super(assignmentForm, self).__init__(*args, **kwargs)
+        self.fields["content_url"].help_text = "Please Enter Your Business URL. (Youtube channel, or Blog URL)"
+        self.fields["content_url"].label = "Content URL"
+
+
 class clienteleForm(forms.ModelForm):
     class Meta:
         model = clientele

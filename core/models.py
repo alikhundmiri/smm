@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
-
+from datetime import timedelta
 def return_date_time():
 		now = timezone.now()
 		return now + timedelta(days=3)
@@ -70,7 +70,7 @@ class assignment(models.Model):
 	updated					=			models.DateTimeField(auto_now=True, auto_now_add=False)
 
 	def __str__(self):
-		return(self.client)
+		return(self.status)
 
 
 	class Meta:

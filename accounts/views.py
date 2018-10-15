@@ -16,7 +16,7 @@ def login_view(request):
 		user = authenticate(username=username, password=password)
 		login(request,user)
 		# change redirect to profile page
-		return redirect('core:welcome', user_id=user.id)
+		return redirect('core:welcome')
 	context = {
 		"name_nav" : 'Login',
 		"nbar" : "Login",
