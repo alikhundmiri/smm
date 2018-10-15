@@ -10,12 +10,57 @@ The doctor will see you now! | {{ block.super }}
 {{ form.media }}
 {% endblock %}
 
-{% block content_1 %}
+{% block content_2 %}
 
-<!-- <div style="margin-top: 100px"></div> -->
-{{client_assignment }}
+<div style="margin-top: 100px"></div>
+<div class="row">
+	<div class="col">
+		<p style="float: right;">
+			<a href="{% url 'core:new_assignment' user_id=request.user.id %}">
+				New order
+			</a>
+		</p>
 
-<a href="{% url 'core:new_assignment' user_id=request.user.id %}">New Assignment</a>
+		<p style="float: left;">{{client_assignment|length}} Current Orders</p>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col">
+		<h1 class="emoji-header-center">🏗</h1>	
+		<h3>{{top_text}}</h3>
+		<h3><small>{{form_text}}</small></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Delivery Date</th>
+					<th scope="col">Status</th>
+					<th scope="col">Delivery</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for assignment in client_assignment %}
+				<tr>
+					<th scope="row">{{forloop.counter}}</th>
+					<td>{{assignment.due_date}}<br><small>{{assignment.due_date|timeuntil}} left</small></td>
+					<td>{{assignment.status}}</td>
+					<td><span style="color: gray">Download</span></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+<div style="margin-top: 100px"></div>
+
+
+<!-- {{client_assignment }} -->
+
 
 <!-- <div style="margin-top: 100px"></div> -->
 {% endblock %}
