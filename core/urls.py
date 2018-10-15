@@ -20,7 +20,7 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.index , name='index'),
-	path('setup', views.setup, name='setup'),
-	path('assignment', views.new_assignment, name='new_assignment'),
-	path('welcome', views.welcome , name='welcome'),
+	path('<int:user_id>/setup', views.setup, name='setup'),
+	path('<int:user_id>/assignment', views.new_assignment, name='new_assignment'),
+	path('<int:user_id>/welcome', views.welcome , name='welcome'),
 ]

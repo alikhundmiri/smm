@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+The doctor will see you now! | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+{{ form.media }}
+{% endblock %}
+
+{% block content_1 %}
+
+<!-- <div style="margin-top: 100px"></div> -->
+{{client_assignment }}
+<!-- <div style="margin-top: 100px"></div> -->
+{% endblock %}

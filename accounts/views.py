@@ -16,7 +16,7 @@ def login_view(request):
 		user = authenticate(username=username, password=password)
 		login(request,user)
 		# change redirect to profile page
-		return redirect('core:welcome')
+		return redirect('core:welcome', user_id=user.id)
 	context = {
 		"name_nav" : 'Login',
 		"nbar" : "Login",
@@ -41,7 +41,7 @@ def register_view(request):
 		login(request, new_user)
 
 		# change redirect to new user account form.
-		return redirect("core:welcome")
+		return redirect("core:setup", user_id=user.id)
 
 	context = {
 		"name_nav" : 'Register',

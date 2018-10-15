@@ -39,7 +39,6 @@ class clientele(models.Model):
 		)
 
 	client					=			models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-
 	business_url			=			models.URLField()
 	business_type			=			models.CharField(max_length=20, choices=CLIENT_LIST, default=CLIENT_LIST[0][0])
 	timestamp				=			models.DateTimeField(auto_now=False, auto_now_add=True)
@@ -61,10 +60,9 @@ class assignment(models.Model):
 		('Completed', 'completed'),
 		('Rejected', 'rejected'),
 		)
+
 	client					=			models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
-
 	content_url				=			models.URLField()
-
 	due_date				=			models.DateTimeField(default=return_date_time)
 	status					=			models.CharField(max_length=20, choices=ASSIGNMENT_STATUS, default=ASSIGNMENT_STATUS[0][0])
 

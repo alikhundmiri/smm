@@ -4,8 +4,8 @@ from django.http import (
 )
 from django.urls import reverse
 
-
-# from .forms import InterestedForm
+from . models import interested, clientele, assignment
+from .forms import InterestedForm
 
 # LANDING PAGE
 def index(request):
@@ -16,22 +16,28 @@ def index(request):
 	return render(request, 'landing.html', context)
 
 # HOMEPAGE FOR PAYING CUSTOMER.
-def welcome(request):
+def welcome(request, user_id=None):
+
+	client_assignment = assignment.objects.filter(client=user_id)
+	
+	if client_assignment.count() == 0:
+		client_assignment = None
 	context = {
+		'client_assignment' : client_assignment,
 		'show_last_div' : False,
 	}
 
 	return render(request, 'core/welcome.html', context)
 
 # PAGE TO SETUP ACCOUNT. REDIRECT AFTER FIRST REGISTER.
-def setup(request):
+def setup(request, user_id=None):
 	context = {
 
 	}
 	return render(request, 'core/setup.html', context)
 
 # PAGE TO CREATE A NEW ASSIGNMENT
-def new_assignment(request):
+def new_assignment(request, user_id=None):
 	context = {
 
 	}
