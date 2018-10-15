@@ -1,0 +1,77 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	{% block other_meta %}
+
+	{% endblock %}
+
+	<title>{% block title %}Social Media Managing{% endblock %}</title> <!-- MAX 70 Chars-->
+
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'base/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{% static 'base/css/one-page-wonder.css' %}" rel="stylesheet">
+
+	<!-- Custom fonts for this template -->
+	<link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+
+	<style type="text/css">
+	.emoji-header {
+		font-size: 100px !important;
+	}
+	.emoji-header-center {
+		font-size: 100px !important;
+		text-align: center;
+	}</style>
+
+	{% block head_extras %}
+	{% endblock %}
+
+	{% if production %}
+	{% endif %}
+
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	{% include 'navbar.html' %}
+	{% block content_1 %}
+	{% endblock %}
+
+	<div class="col-lg-9 col-md-9">{% block content_header %}{% endblock %}</div>
+	<div class="col-lg-3 col-md-3"></div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-2"></div>
+			<div class="col-lg-6 col-md-8 col-sm-12">
+				<!-- content -->
+				{% block content_2 %}
+				{% endblock %}
+			</div>
+			<div class="col-lg-3 col-md-3"></div>
+		</div>
+	</div>
+
+
+	<!-- Footer -->
+	{% include 'footer.html' %}
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="{% static 'base/vendor/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'base/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
