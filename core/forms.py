@@ -1,7 +1,7 @@
 from django import forms
 from django.core.validators import validate_email
 
-from .models import interested
+from .models import interested, assignment, clientele
 
 # Form for "interested"
 class InterestedForm(forms.ModelForm):
@@ -11,7 +11,6 @@ class InterestedForm(forms.ModelForm):
         'email_address',
         'interested_in',
         ]
-
 
     def clean_contact(self):
         this_email = self.cleaned_data.get('email_address')
@@ -36,3 +35,18 @@ class InterestedForm(forms.ModelForm):
         self.fields["email_address"].label = "Your Email Addresss"
         self.fields["interested_in"].help_text = "Please expect our email with in 24 hours."
         self.fields["interested_in"].label = "Your Email Addresss"
+
+class clienteleForm(forms.ModelForm):
+    class Meta:
+        model = clientele
+        fields = [
+        'business_type',
+        'business_url',
+        ]
+
+    def __init__(self, *args , **kwargs):
+        super(clienteleForm, self).__init__(*args, **kwargs)
+        self.fields["business_url"].help_text = "Please Enter Your Business URL. (Youtube channel, or Blog URL)"
+        self.fields["business_url"].label = "Business URL"
+        self.fields["business_type"].help_text = "Your Content type"
+        self.fields["business_type"].label = "Content Type"

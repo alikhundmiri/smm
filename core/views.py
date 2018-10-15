@@ -5,7 +5,7 @@ from django.http import (
 from django.urls import reverse
 
 from . models import interested, clientele, assignment
-from .forms import InterestedForm
+from .forms import InterestedForm, clienteleForm
 
 # LANDING PAGE
 def index(request):
@@ -31,8 +31,20 @@ def welcome(request, user_id=None):
 
 # PAGE TO SETUP ACCOUNT. REDIRECT AFTER FIRST REGISTER.
 def setup(request, user_id=None):
-	context = {
 
+	if request.method == 'POST':
+		form = clienteleForm(request.POST or None)
+		if form.is_valid():
+			instance = form.save(commit=False)
+			instance.save()
+			return HttpResponseRedirect(reverse('core:welcome', kwargs={'user_id': user_id}))
+	else:
+		form = clienteleForm()
+
+
+	context = {
+		'form' : form,
+		"tab_text": "Confirm.",
 	}
 	return render(request, 'core/setup.html', context)
 
