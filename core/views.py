@@ -22,11 +22,12 @@ def welcome(request):
 	else:
 		return HttpResponseRedirect(reverse('core:index'))
 	# print(request.user.id)
-	client_assignment = assignment.objects.filter(client_id=request.user.id)
+	client_assignment = assignment.objects.filter(user_id=request.user.id)
 	
 
 	if client_assignment.count() == 0:
 		client_assignment = None
+
 	context = {
 		'client_assignment' : client_assignment,
 		'show_last_div' : False,
@@ -41,6 +42,7 @@ def setup(request, user_id=None):
 		form = clienteleForm(request.POST or None)
 		if form.is_valid():
 			instance = form.save(commit=False)
+			instance.client_id = user_id
 			instance.save()
 			return HttpResponseRedirect(reverse('core:welcome'))
 	else:
@@ -60,7 +62,7 @@ def new_assignment(request, user_id=None):
 		form = assignmentForm(request.POST or None)
 		if form.is_valid():
 			instance = form.save(commit=False)
-			instance.client_id = user_id
+			instance.user_id = user_id
 			instance.save()
 
 			return HttpResponseRedirect(reverse('core:welcome'))

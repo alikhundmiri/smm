@@ -12,7 +12,10 @@ The doctor will see you now! | {{ block.super }}
 
 {% block content_2 %}
 
-<div style="margin-top: 100px"></div>
+
+<!-- <div style="margin-top: 100px"></div> -->
+
+
 <div class="row">
 	<div class="col">
 		<p style="float: right;">
@@ -20,18 +23,21 @@ The doctor will see you now! | {{ block.super }}
 				New order
 			</a>
 		</p>
-
-		<p style="float: left;">{{client_assignment|length}} Current Orders</p>
 	</div>
 </div>
-
 <div class="row">
 	<div class="col">
 		<h1 class="emoji-header-center">🏗</h1>	
-		<h3>{{top_text}}</h3>
-		<h3><small>{{form_text}}</small></h3>
+		<h3 class="text-center">Hi {{request.user.username}}</h3>
+		<h3 class="text-center">
+			<small>
+				you currently have {{client_assignment|length}} orders in progress.
+			</small>
+		</h3>
 	</div>
 </div>
+<div style="margin-top: 40px"></div>
+
 <div class="row">
 	<div class="col">
 		<table class="table">
@@ -54,6 +60,20 @@ The doctor will see you now! | {{ block.super }}
 				{% endfor %}
 			</tbody>
 		</table>
+	</div>
+</div>
+<br>
+<div class="row">
+	<div class="col">
+		<h1 class="emoji-header-center">🏘</h1>	
+		<!-- <h3 class="text-center">Hi {{request.user.username}}</h3> -->
+		<h3 class="text-center">
+			<small>
+				<a href="">
+					Click Here to see all previous Orders.
+				</a>
+			</small>
+		</h3>
 	</div>
 </div>
 <div style="margin-top: 100px"></div>
