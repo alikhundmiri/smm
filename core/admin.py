@@ -21,9 +21,9 @@ class ClienteleAdmin(admin.ModelAdmin):
 		model = clientele
 
 class AssignmentAdmin(admin.ModelAdmin):
-	list_display = ['client', 'content_url', 'due_date','status']
-	list_filter = ['client', 'content_url', 'due_date','status']
-	search_fields = ['client', 'content_url', 'due_date','status']
+	list_display = ['user', 'client', 'content_url', 'due_date', 'status']
+	list_filter = ['user', 'client', 'content_url', 'due_date', 'status']
+	search_fields = ['user', 'client', 'content_url', 'due_date', 'status']
 	list_editable = ['status',]
 	
 	class Meta:
